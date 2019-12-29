@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+    <title> This is Zerodha Project </title>
+</head>
+<style>
+body{
+    font-family: san-serif;
+    background: url(image.jpg);
+    background-color:white;
+}
+
+table {
+	width: 400px;
+    background-color:cyan;
+}
+
+h1, h2{
+  color: #000aaa;
+  background-color:cyan;
+}
+
+h3 {
+  color: black;
+  background-color:red;
+}
+
+th, caption {
+	text-align: center;
+	background-color:blue;
+}
+
+table, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+th, td, tr {
+	padding: 10px;
+	color: black;
+	text-align: center;
+}
+
+tr:nth-child(title) {
+	background-color: #ddf;
+}
+
+tr:nth-child(even) {
+	background-color: #ddf;
+}
+
+.box{
+    position: relative;
+    top: 0%;
+    left: 40%;
+
+}
+input{
+    position: relative;
+    display: inline:block;
+}
+input[type="text"]{
+    background: #fff;
+    width: 200px;
+    height: 34px;
+    border-radius: 25px 0 0 25px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+button[type="submit"]{
+    position: relative;
+    left: -5px;
+    background: blue;
+    color: white;
+    width: 60px;
+    height: 38px;
+    border-radius: 0 25px 25px 0;
+
+}
+button[type="submit"]:hover
+{
+    background: #ff5722;
+}
+
+</style>
+<body>
+<div class = "box">
+
+    <form method="get" action="/search" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="  Search by name..." aria-label="Search" name="query" id="search" >
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</div>
+
+    <h1>This is Top 10 Stock DATA by High column</h1>
+    <table>
+        <tr><th>NAME</th><th>CODE</th><th>OPEN</th><th>HIGH</th><th>LOW</th><th>CLOSE</th></tr>
+            {% if stock_by_name_dict %}
+            {% for v0,v1,v2,v3,v4,v5 in stock_by_name_dict %}
+            <tr>
+                <td>{{v0 | safe}}</td>
+                <td>{{v1 | safe}}</td>
+                <td>{{v2 | safe}}</td>
+                <td>{{v3 | safe}}</td>
+                <td>{{v4 | safe}}</td>
+                <td>{{v5 | safe}}</td>
+            </tr>
+            {%endfor%}
+        {% else %}
+            <h1>Data is not present</h1>
+        {% endif %}
+
+    </table>
+
+<h2>Search Result</h2>
+    <table>
+     {%  if result %}
+        <tr><th>NAME</th><th>CODE</th><th>OPEN</th><th>HIGH</th><th>LOW</th><th>CLOSE</th></tr>
+        {% for key_i,value_i in result.items %}
+            <tr>
+                {%if key_i %}
+                    <td>{{key_i|safe}}</td>
+                    {% for val in value_i %}
+                        <td>{{val|safe}}</td>
+                    {%endfor%}
+                {% else %}
+                    <h2>dict is empty</h2>
+                {% endif %}
+            </tr>
+        {%endfor%}
+     {% else %}
+        <h3>{{s}}</h3>
+     {% endif %}
+     </table>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+table {
+	width: 400px;
+}
+
+h1{
+  color: #0000FF;
+}
+h2{
+  color: #00CCFF;
+}
+th, caption {
+	text-align: center;
+}
+
+table, th, td {
+	border: 1px solid #000;
+	border-collapse: collapse;
+}
+
+th, td {
+	padding: 100px;
+}
+
+tr:nth-child(even) {
+	background-color: #fff;
+}
+
+tr:nth-child(even) {
+	background-color: #ddd;
+}
+
+.btn{
+    border: 1px solid #3498db;
+    background: none;
+    padding: 10px 20px;
+}
