@@ -14,7 +14,7 @@ idna==2.8
 itsdangerous==0.24
 Jinja2==2.8
 MarkupSafe==0.23
-numpy==1.18.0
+numpy==1.22.0
 pandas==0.24.2
 psycopg2==2.8.4
 python-dateutil==2.5.3
